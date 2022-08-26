@@ -2,7 +2,6 @@ package com.desafio_tunts.services;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.BorderStyle;
@@ -38,6 +37,7 @@ public class ExcelWriterService {
 		setBorders(mainStyle);
 		
 		XSSFCellStyle areaStyle = createStyle(sheet, false, 11, BLACK, HorizontalAlignment.RIGHT);
+		areaStyle.setDataFormat((short) 4);
 		setBorders(areaStyle);
 		
 		int rowCount = 1;
@@ -157,9 +157,8 @@ public class ExcelWriterService {
 			cell.setCellValue("-");
 		}
 		
-		DecimalFormat df = new DecimalFormat("#,##0.00");
 		cell = (XSSFCell) row.createCell(2);
-		cell.setCellValue(df.format(country.getArea()));
+		cell.setCellValue(country.getArea());
 		
 		cell = (XSSFCell) row.createCell(3);
 		
