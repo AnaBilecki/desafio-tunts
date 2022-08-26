@@ -1,21 +1,21 @@
 package com.desafio_tunts.entities;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.google.gson.JsonObject;
 
 public class Country {
 
 	private CountryName name;
-	private ArrayList<String> capital;
+	private List<String> capital;
 	private Double area;
 	private HashMap<String, JsonObject> currencies;
 	
 	public Country() {
 	}
 
-	public Country(CountryName name, ArrayList<String> capital, Double area, HashMap<String, JsonObject> currencies) {
+	public Country(CountryName name, List<String> capital, Double area, HashMap<String, JsonObject> currencies) {
 		this.name = name;
 		this.capital = capital;
 		this.area = area;
@@ -30,7 +30,7 @@ public class Country {
 		this.name = name;
 	}
 
-	public ArrayList<String> getCapital() {
+	public List<String> getCapital() {
 		return capital;
 	}
 
