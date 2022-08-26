@@ -45,6 +45,10 @@ public class Country implements Comparable<Country> {
 	public HashMap<String, JsonObject> getCurrencies() {
 		return currencies;
 	}
+	
+	public String getCurrenciesList() {
+		return String.join(",", this.getCurrencies().keySet());
+	}
 
 	@Override
 	public String toString() {

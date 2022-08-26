@@ -19,7 +19,7 @@ public class ExcelWriterService {
 		XSSFSheet sheet = workbook.createSheet("Countries List");
 
 		createTitleRow(sheet);
-		createHeadersRow(sheet);
+		createHeaderRow(sheet);
 		
 		int rowCount = 1;
 
@@ -45,7 +45,7 @@ public class ExcelWriterService {
 		sheet.addMergedRegion(rangeAddress);
 	}
 	
-	private void createHeadersRow(XSSFSheet sheet) {
+	private void createHeaderRow(XSSFSheet sheet) {
 		
 		XSSFRow row = sheet.createRow(1);
 
@@ -81,7 +81,7 @@ public class ExcelWriterService {
 		cell = (XSSFCell) row.createCell(3);
 		
 		if (country.getCurrencies() != null) {
-			cell.setCellValue(country.getCurrencies().keySet().toString());
+			cell.setCellValue(country.getCurrenciesList());
 		} else {
 			cell.setCellValue("-");
 		}
