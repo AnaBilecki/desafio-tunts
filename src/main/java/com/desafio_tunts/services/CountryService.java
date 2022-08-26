@@ -6,6 +6,7 @@ import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.desafio_tunts.entities.Country;
@@ -36,6 +37,8 @@ public class CountryService {
 			Gson gson = new Gson();
 			Type countryListType = new TypeToken<ArrayList<Country>>(){}.getType();
 			List<Country> country = gson.fromJson(content, countryListType);
+			
+			Collections.sort(country);
 			
 			return country;
 			

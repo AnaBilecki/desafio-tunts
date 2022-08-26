@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.google.gson.JsonObject;
 
-public class Country {
+public class Country implements Comparable<Country> {
 
 	private CountryName name;
 	private List<String> capital;
@@ -49,5 +49,9 @@ public class Country {
 	@Override
 	public String toString() {
 		return "name = " + name + ", capital = " + capital + ", area = " + area + ", currencies = " + currencies;
+	}
+
+	public int compareTo(Country o) {
+		return this.getName().getCommon().compareTo(o.getName().getCommon());
 	}
 }
