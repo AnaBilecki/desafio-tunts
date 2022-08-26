@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -17,7 +18,10 @@ public class ExcelWriterService {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		XSSFSheet sheet = workbook.createSheet("Countries List");
 
-		int rowCount = 0;
+		createTitleRow(sheet);
+		createHeadersRow(sheet);
+		
+		int rowCount = 1;
 
 		for (Country country : countries) {
 			XSSFRow row = sheet.createRow(++rowCount);
@@ -30,7 +34,34 @@ public class ExcelWriterService {
 		
 		workbook.close();
 	}
+
+	private void createTitleRow(XSSFSheet sheet) {
+		
+		XSSFRow row = sheet.createRow(0);
+		XSSFCell cellName = row.createCell(0);
+		cellName.setCellValue("Countries List");
+		
+		CellRangeAddress rangeAddress = new CellRangeAddress(0, 0, 0, 3);
+		sheet.addMergedRegion(rangeAddress);
+	}
 	
+	private void createHeadersRow(XSSFSheet sheet) {
+		
+		XSSFRow row = sheet.createRow(1);
+
+		XSSFCell cellName = row.createCell(0);
+		cellName.setCellValue("Name");
+
+		XSSFCell cellCapital = row.createCell(1);
+		cellCapital.setCellValue("Capital");
+
+		XSSFCell cellArea = row.createCell(2);
+		cellArea.setCellValue("Area");
+
+		XSSFCell cellCurrencies = row.createCell(3);
+		cellCurrencies.setCellValue("Currencies");
+	}
+
 	private void writeCountry(Country country, XSSFRow row) {
 
 		XSSFCell cell = (XSSFCell) row.createCell(0);
