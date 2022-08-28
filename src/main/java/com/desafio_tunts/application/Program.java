@@ -23,7 +23,7 @@ public class Program {
 			countries = CountryService.getAll();
 			excelWriter.writeExcel(countries, excelFilePath);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Error: " + e.getMessage());
 		}
 	}
 }
